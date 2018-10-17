@@ -1,0 +1,33 @@
+import java.io.IOException;
+import java.sql.Date;
+
+import org.junit.Test;
+
+import com.fasterxml.jackson.databind.ext.Java7Support;
+import com.ullink.slack.simpleslackapi.SlackAttachment;
+import com.ullink.slack.simpleslackapi.SlackChannel;
+import com.ullink.slack.simpleslackapi.SlackSession;
+import com.ullink.slack.simpleslackapi.impl.SlackSessionFactory;
+
+public class test {
+	@Test
+	public void testapp()
+	{
+		final SlackSession session = SlackSessionFactory.createWebSocketSlackSession("Your secret Token");
+		try {
+			session.connect();
+		
+		System.out.println(session.isConnected());
+		SlackChannel channel = session.findChannelByName("Your channel name");
+		
+		for (int i = 0; i < 100; i++) {
+			System.out.println(java.time.LocalDateTime.now());
+			session.sendMessage(channel, "["+java.time.LocalDateTime.now()+"] Test Send Message From SpringBoot!");
+			Thread.sleep(5000);
+		}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}
