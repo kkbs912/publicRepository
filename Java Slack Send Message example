@@ -6,13 +6,8 @@
 	</dependency>
 
 
-import java.io.IOException;
-import java.sql.Date;
-
 import org.junit.Test;
 
-import com.fasterxml.jackson.databind.ext.Java7Support;
-import com.ullink.slack.simpleslackapi.SlackAttachment;
 import com.ullink.slack.simpleslackapi.SlackChannel;
 import com.ullink.slack.simpleslackapi.SlackSession;
 import com.ullink.slack.simpleslackapi.impl.SlackSessionFactory;
@@ -21,12 +16,14 @@ public class test {
 	@Test
 	public void testapp()
 	{
-		final SlackSession session = SlackSessionFactory.createWebSocketSlackSession("Your secret Token");
+		final SlackSession session = SlackSessionFactory.createWebSocketSlackSession("xoxp-457837801923-458126743125-457770464644-c3b3ad4a91576e9bea1b0a236cdd58a7");
 		try {
 			session.connect();
 		
 		System.out.println(session.isConnected());
-		SlackChannel channel = session.findChannelByName("Your channel name");
+		SlackChannel channel = session.findChannelByName("signal");
+		
+				
 		
 		for (int i = 0; i < 100; i++) {
 			System.out.println(java.time.LocalDateTime.now());
@@ -39,3 +36,4 @@ public class test {
 		}
 	}
 }
+
